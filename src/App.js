@@ -15,17 +15,21 @@ class App extends Component {
     };
   }
 
-  // selectEmployee
+  selectEmployee(employee) {
+    this.setState({ selectedEmployee: employee });
+  }
 
-  // refresh
+  refresh() {
+    this.setState(this.state);
+  }
 
   render() {
     return (
       <div id="app">
         <Header />
         <div className="main-container">
-          <EmployeeList employees={this.state.employees} selectEmployee={ this.selectEmployee } />
-          <EmployeeEditor selected={this.state.selectedEmployee} refreshList={ this.refresh } />
+          <EmployeeList employees={this.state.employees} selectEmployee={this.selectEmployee.bind(this)} />
+          <EmployeeEditor selected={this.state.selectedEmployee} refreshList={this.refresh.bind(this)} />
         </div>
       </div>
     )
