@@ -640,3 +640,15 @@ And finally we want the text of the `<li>` element to be the name of the `employ
 ## Black Diamond ( Stage 10 )
 
 Re-create the project from Stages 1 - 9 without looking back at code solutions. If you have to look back at a certain stage, restart from Stage 1 again.
+
+## Contributions
+
+If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
+
+## Copyright
+
+© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<p align="center">
+<img src="https://devmounta.in/img/logowhiteblue.png" width="250">
+</p>
