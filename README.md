@@ -2,7 +2,7 @@
 
 # Project Summary
 
-In this project we will take a look at an employee management application and learn how it works. We will cover the following topics by going through each stage and building out a part of the application all the way up to the black diamond where you will build the entire application from nothing: 
+In this project we will take a look at an employee management application and learn how it works. We will cover the following topics, found below in the list, by going through each project stage and building out a part of the application.
 
 * State
 * Props
@@ -11,7 +11,7 @@ In this project we will take a look at an employee management application and le
 * this
 * componentWillReceiveProps ( React life cycle method )
 
-We can control which stage we are on by using `index.js` in the `src/` directory. On line 3 in `index.js` you should see:
+We can control which stage we are on by using `index.js` in the `src/` directory. On line 3 in `src/index.js` you should see:
 
 ```js
 import App from './Stage 1/App';
@@ -23,9 +23,9 @@ We can change stages by changing the number in the string. For example if I want
 import App from './Stage 2/App';
 ```
 
-<b> It's imperative to change stages when moving from stage to stage! </b>
+<b> It's imperative to change the stage number in `src/index.js` when moving from stage to stage in this README! </b>
 
-Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. The solution to every file can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>
+Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. Files containing the solution can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>
 
 ## Setup
 
@@ -39,11 +39,11 @@ Also, in this project the stages will build on top of each other. Every stage wi
 
 ### Summary
 
-In this stage we will fix context issues using `.bind` and `this`. If we inspect our application we can see that when we try to interact with the components nothing is working correctly and we are getting an error that `this.setState` is not a function.
+In this stage we will fix context issues using `.bind` and `this`. If we inspect our application, we can see that when we try to interact with the components nothing is working correctly and we are getting an error that `this.setState` is not a function.
 
 ### Instructions
 
-Using the browser's developer tools figure out where `.bind` needs to be applied in `App.js` and `EmployeeEditor.js`.
+Using the browser's developer tools, figure out where `.bind` needs to be applied in `App.js` and `EmployeeEditor.js`.
 
 <details>
 
@@ -120,7 +120,7 @@ This life cycle method will be called whenever the `props` for `EmployeeEditor` 
 }
 ```
 
-Let's dive into why we are using `employee` and `originalEmployee`, or in other words why a copy and a original of the same object. In JavaScript if I set a variable equal to an already defined object they both reference the same object. For example:
+Let's dive into why we are using `employee` and `originalEmployee`, or in other words why a copy and a original of the same object. In JavaScript, if I set a variable equal to an already defined object they both reference the same object. For example:
 
 ```js
 var obj1 = {
@@ -133,7 +133,7 @@ obj2.name = 'Override';
 console.log(obj1.name); // 'Override'
 ```
 
-Even though I created a new variable `obj2` and changed the `name` property on `obj2`, `obj2` and `obj1`'s `name` property was updated to `'Override'`. This would be bad for an `onChange` event that updates a state property every time a user types because we don't want changes to be final until the user presses the `Save` button. To get around this issue we can use `Object.assign()` to make a copy of an object into a new object; effectively separating the two. 
+Even though I created a new variable, `obj2` and changed the `name` property on `obj2`, `obj2` and `obj1`'s `name` property was updated to `'Override'`. This would be bad for an `onChange` event that updates a state property every time a user types because we don't want changes to be final until the user presses the `Save` button. To get around this issue, we can use `Object.assign()` to make a copy of an object into a new object; effectively separating the two. 
 
 ```js
 var obj1 = {
@@ -146,7 +146,7 @@ obj2.name = 'Override';
 console.log(obj1.name); // 'James'
 ```
 
-There is a down side to `Object.assign` in this scenario however, which is why we are also using a state property called `originalEmployee`. When using `Object.assign` we only get a copy of the properties on the object but not the `prototypes`. We will need those `prototypes` for a later stage so we'll just use `originalEmployee` to store the original object. As a bonus since we have an original copy of the object, canceling changes is as easy as setting `employee` equal to a copy of `originalEmployee`.
+There is a down side to `Object.assign` in this scenario however, which is why we are also using a state property called `originalEmployee`. When using `Object.assign`, we only get a copy of the properties on the object but not the `prototypes`. We will need those `prototypes` for a later stage so we'll just use `originalEmployee` to store the original object. As a bonus, since we have an original copy of the object, canceling changes is as easy as setting `employee` equal to a copy of `originalEmployee`.
 
 So getting back to the problem at hand, our `componentWillReceiveProps` method. Let's use `this.setState` to update `employee` to be a copy of `props.selected`, `originalEmployee` to be `props.selected`, `notModified` to be true. We reset `notModified` to true so when a user selects a new employee the Save and Cancel button wont be enabled until they make a change again.
 
@@ -182,7 +182,7 @@ handleChange(prop, val) {
 }
 ```
 
-In this method we'll want to change the `notModified` property on state from `true` to `false`. When we update `notModified` to `false` the Save and Cancel buttons will no longer be disabled ( allowing a user to click on them ). We also only need to update this property if it is `true`, so let's add an if statement to wrap our `setState` call.
+In this method, we'll want to change the `notModified` property on state from `true` to `false`. When we update `notModified` to `false` the Save and Cancel buttons will no longer be disabled ( allowing a user to click on them ). We also only need to update this property if it is `true`, so let's add an if statement to wrap our `setState` call.
 
 ```jsx
 handleChange(prop, val) {
@@ -269,7 +269,7 @@ constructor(id, name, phone, title) {
 }
 ```
 
-Now all we need are three methods, one to update the `name`, one to update the `phone`, and one to update the `title`. For simplicity I broke these out into three methods, they'll be very similiar to each other. All three methods will take in a `string` parameter and then update the corresponding property on the class to that `string`. 
+Now all we need are three methods, one to update the `name`, one to update the `phone`, and one to update the `title`. For simplicity, I broke these out into three methods, they'll be very similiar to each other. All three methods will take in a `string` parameter and then update the corresponding property on the class to that `string`. 
 
 ```js
 constructor(id, name, phone, title) {
@@ -318,7 +318,7 @@ save() {
 }
 ```
 
-In this `save` method we will want to use the `prototypes` on the `Employee` class to update our values. Since there are only three properties to update let's just call all three update methods regardless of which one has changed. It would be more code to check which one to update. 
+In this `save` method, we will want to use the `prototypes` on the `Employee` class to update our values. Since there are only three properties to update let's just call all three update methods regardless of which one has changed. It would be more code to check which one to update. 
 
 ```js
 save() {
@@ -348,7 +348,7 @@ cancel() {
 }
 ```
 
-In this method we'll want to make a copy of the `originalEmployee` property on state and assign it to a variable. Then we'll use `setState` to update our `employee` with the new variable we just made and also set `notModified` to `true`.
+In this method, we'll want to make a copy of the `originalEmployee` property on state and assign it to a variable. Then we'll use `setState` to update our `employee` with the new variable we just made and also set `notModified` to `true`.
 
 ```js
 cancel() {
@@ -501,7 +501,7 @@ Import the `Header`, `EmployeeList`, and `EmployeeEditor` components into `App.j
 
 <br />
 
-In `src/Stage 8/App.js` let's begin by importing our three components. Based on the filte structure inside of stage 8 we can see there is a components folder at the same level of `App.js`. Therefore we will be importing our components from `'./components/'`. Let's `import` our components in `App.js` where it says `// Components`.
+In `src/Stage 8/App.js` let's begin by importing our three components. Based on the file structure inside of stage 8, we can see there is a components folder at the same level of `App.js`. Therefore, we will be importing our components from `'./components/'`. Let's `import` our components in `App.js` where it says `// Components`.
 
 ```jsx
 import Header from './components/Header/Header';
@@ -509,7 +509,7 @@ import EmployeeList from './components/EmployeeList/EmployeeList';
 import EmployeeEditor from './components/EmployeeEditor/EmployeeEditor';
 ```
 
-Now that `App.js` has access to these components we can then `render` them. Let's `render` the `Header` component nested inside of the `div` with the `id` of `app`. And `render` the `EmployeeList` and `EmployeeEditor` component nested in the `div` with the `id` of `main-container`.
+Now that `App.js` has access to these components, we can then `render` them. Let's `render` the `Header` component nested inside of the `div` with the `id` of `app`. And `render` the `EmployeeList` and `EmployeeEditor` component nested in the `div` with the `id` of `main-container`.
 
 ```jsx
 return (
@@ -523,7 +523,7 @@ return (
 )
 ```
 
-Now we need to add the `props` so our child components can still function correctly. For `EmployeeList` to function correctly it will need two props: `employees` and `selectEmployee`. `employees` should equal the array of employees kept on state in `App.js` and `selectEmployee` should equal the method on `App.js` that calls `setState` to update the selected employee.
+Now we need to add the `props` so our child components can still function correctly. For `EmployeeList` to function correctly, it will need two props: `employees` and `selectEmployee`. `employees` should equal the array of employees kept on state in `App.js` and `selectEmployee` should equal the method on `App.js` that calls `setState` to update the selected employee.
 
 ```jsx
 return (
