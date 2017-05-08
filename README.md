@@ -2,7 +2,7 @@
 
 # Project Summary
 
-In this project we will take a look at an employee management application and learn how it works. We will cover the following topics by going through each stage and building out a part of the application all the way up to the black diamond where you will build the entire application from nothing: 
+In this project we will take a look at an employee management application and learn how it works. We will cover the following topics, found below in the list, by going through each project stage and building out a part of the application.
 
 * State
 * Props
@@ -11,7 +11,7 @@ In this project we will take a look at an employee management application and le
 * this
 * componentWillReceiveProps ( React life cycle method )
 
-We can control which stage we are on by using `index.js` in the `src/` directory. On line 3 in `index.js` you should see:
+We can control which stage we are on by using `index.js` in the `src/` directory. On line 3 in `src/index.js` you should see:
 
 ```js
 import App from './Stage 1/App';
@@ -23,9 +23,9 @@ We can change stages by changing the number in the string. For example if I want
 import App from './Stage 2/App';
 ```
 
-<b> It's imperative to change stages when moving from stage to stage! </b>
+<b> It's imperative to change the stage number in `src/index.js` when moving from stage to stage in this README! </b>
 
-Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. The solution to every file can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>
+Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. Files containing the solution can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>
 
 ## Setup
 
