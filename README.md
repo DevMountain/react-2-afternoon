@@ -39,8 +39,6 @@ You can find a live finished example <a href="https://devmountain.github.io/empl
 * Run `npm install` in the root directory
 * Run `npm start` to spin up a development server ( keep the development server running to debug stages )
 
-<b> Add image of finished project when design is complete </b>
-
 ## Stage 1
 
 ### Summary
@@ -57,8 +55,8 @@ Using the browser's developer tools, figure out where `.bind` needs to be applie
 
 <br />
 
-* Open `App.js` ( `src/Stage 1/App.js` )
-* Open `EmployeeEdtior.js` ( `src/Stage 1/components/EmployeeEditor.js` )
+* Open `src/Stage 1/App.js`.
+* Open `src/Stage 1/components/EmployeeEdtior.js`.
 
 The first error that you should encounter is when clicking on an employee. This error is happening when the `selectEmployee` method on `App` gets called from the `employeeList` component. What's happening here? We're losing our context of `this`. 
 
