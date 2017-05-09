@@ -25,19 +25,19 @@ import App from './Stage 2/App';
 
 <b> It's imperative to change the stage number in `src/index.js` when moving from stage to stage in this README! </b>
 
-Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. Files containing the solution can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>
+Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. Files containing the solution can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>. 
+
+<br />
 
 You can find a live finished example <a href="https://devmountain.github.io/employee-manager/">here</a>.
 
-
+<img src="https://github.com/DevMountain/employee-manager/blob/solution/readme/1.png" />
 
 ## Setup
 
 * `Fork` and `clone` this repository
 * Run `npm install` in the root directory
 * Run `npm start` to spin up a development server ( keep the development server running to debug stages )
-
-<b> Add image of finished project when design is complete </b>
 
 ## Stage 1
 
@@ -55,8 +55,8 @@ Using the browser's developer tools, figure out where `.bind` needs to be applie
 
 <br />
 
-* Open `App.js` ( `src/Stage 1/App.js` )
-* Open `EmployeeEdtior.js` ( `src/Stage 1/components/EmployeeEditor.js` )
+* Open `src/Stage 1/App.js`.
+* Open `src/Stage 1/components/EmployeeEdtior.js`.
 
 The first error that you should encounter is when clicking on an employee. This error is happening when the `selectEmployee` method on `App` gets called from the `employeeList` component. What's happening here? We're losing our context of `this`. 
 
@@ -71,24 +71,52 @@ Because of this current setup when the `selectEmployee` method gets called from 
 }
 ```
 
-So if the `App` component has the method of `setState` how can we keep our context of `this` when calling the method in `EmployeeList`? We can `bind` it when the context of `this` equals the `App` component. In `App.js` when we render the `EmployeeList` component we can modify the prop `selectEmployee` to `this.selectEmployee.bind(this)`. Now our `selectEmployee` method should be working properly and updating the `EmployeeEditor` component on the right.
+So if the `App` component has the method of `setState` how can we keep our context of `this` when calling the method in `EmployeeList`? We can `bind` it when the context of `this` equals the `App` component. In `App.js` at the bottom of the `constructor` method we can `bind` `this` to our class method.
+
 
 ```jsx
-<EmployeeList employees={this.state.employees} selectEmployee={ this.selectEmployee.bind(this) } />
+constructor() {
+  super();
+  this.state = {
+    employees: [ new Employee(0, 'Bernice Ortiz', 4824931093, 'CEO'), new Employee(1, 'Marnie Barnett', 3094812387, 'CTO'), new Employee(2, 'Phillip Weaver', 7459831843, 'Manager'), new Employee(3, 'Teresa Osborne', 3841238745, 'Director of Engineering'), new Employee(4, 'Dollie Berry', 4873459812, 'Front-End Developer'), new Employee(5, 'Harriett Williamson', 6571249801, 'Front-End Developer'), new Employee(6, 'Ruby Estrada', 5740923478, 'Back-End Developer'), new Employee(7, 'Lou White', 8727813498, 'Full-Stack Developer'), new Employee(8, 'Eve Sparks', 8734567810, 'Product Manager'), new Employee(9, 'Lois Brewer', 8749823456, 'Sales Manager') ],
+    selectedEmployee: null
+  };
+
+  this.selectEmployee = this.selectEmployee.bind( this );
+}
 ```
 
-The next error we should encounter is that the `save` and `cancel` buttons in the `EmployeeEditor` component are not working. Based on the error message in the browser debugger, it appears that `this` is equal to `null` when inside of the `save` and `cancel` methods. Since state exists on the component, we want to use `bind` when `this` equals the component. In our `onClick` methods we can `.bind(this)` to get the correct context.
+Now our `selectEmployee` method should be working properly and updating the `EmployeeEditor` component on the right.
+
+The next error we should encounter is that the `save` and `cancel` buttons in the `EmployeeEditor` component are not working. Based on the error message in the browser debugger, it appears that `this` is equal to `null` when inside of the `save` and `cancel` methods. Since state exists on the component, we want to use `bind` when `this` equals the component. Just like with the `selectEmployee` method we can `bind` `this` to the `save` and `cancel` methods at the bottom of the `constructor` method in the `EmployeeEditor` component.
 
 ```jsx
-<button id="saveBtn" className="confirmationButton" disabled={this.state.notModified} onClick={ this.save.bind(this) }> Save </button>
-<button className="neutralButton" disabled={this.state.notModified} onClick={ this.cancel.bind(this) }> Cancel </button>
+constructor() {
+  super();
+  this.state = {
+    employee: null,
+    originalEmployee: null,
+    notModified: true
+  };
+
+  this.save = this.save.bind( this );
+  this.cancel = this.cancel.bind( this );
+}
 ```
 
-This will fix our `cancel` button context issue however you'll notice that `save` still has a context issue. This is because it calls a method passed down as a prop called `refreshList`. `refreshList` handles updating the `EmployeeList` names on the left hand side. If we add a `console.log(this)` in the `refreshList` method we'll see it has a similiar issue of `this` referring to the object of props. If we `.bind(this)` when we pass the method down as a prop in `App.js`, just like we did for `selectEmployee`, then `this` will have the correct context.
+This will fix our `cancel` button context issue however you'll notice that `save` still has a context issue. This is because it calls a method passed down as a prop called `refreshList`. `refreshList` handles updating the `EmployeeList` names on the left hand side. If we add a `console.log(this)` in the `refreshList` method we'll see it has a similiar issue of `this` referring to the object of props. If we `.bind` `this` to the method at the bottom of the `constructor` method in `App.js`, just like we did for `selectEmployee`, then `this` will have the correct context.
 
 ```jsx
-<EmployeeList employees={this.state.employees} selectEmployee={ this.selectEmployee.bind(this) } />
-<EmployeeEditor selected={this.state.selectedEmployee} refreshList={ this.refresh.bind(this) } />
+constructor() {
+  super();
+  this.state = {
+    employees: [ new Employee(0, 'Bernice Ortiz', 4824931093, 'CEO'), new Employee(1, 'Marnie Barnett', 3094812387, 'CTO'), new Employee(2, 'Phillip Weaver', 7459831843, 'Manager'), new Employee(3, 'Teresa Osborne', 3841238745, 'Director of Engineering'), new Employee(4, 'Dollie Berry', 4873459812, 'Front-End Developer'), new Employee(5, 'Harriett Williamson', 6571249801, 'Front-End Developer'), new Employee(6, 'Ruby Estrada', 5740923478, 'Back-End Developer'), new Employee(7, 'Lou White', 8727813498, 'Full-Stack Developer'), new Employee(8, 'Eve Sparks', 8734567810, 'Product Manager'), new Employee(9, 'Lois Brewer', 8749823456, 'Sales Manager') ],
+    selectedEmployee: null
+  };
+
+  this.selectEmployee = this.selectEmployee.bind( this );
+  this.refresh = this.refresh.bind( this );
+}
 ```
 
 </details>
