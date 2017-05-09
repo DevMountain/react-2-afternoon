@@ -29,7 +29,7 @@ Also, in this project the stages will build on top of each other. Every stage wi
 
 You can find a live finished example <a href="https://devmountain.github.io/employee-manager/">here</a>.
 
-
+<img src="https://github.com/DevMountain/employee-manager/blob/solution/readme/1.png" />
 
 ## Setup
 
