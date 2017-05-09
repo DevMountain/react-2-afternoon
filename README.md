@@ -25,7 +25,7 @@ import App from './Stage 2/App';
 
 <b> It's imperative to change the stage number in `src/index.js` when moving from stage to stage in this README! </b>
 
-Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. Files containing the solution can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>
+Also, in this project the stages will build on top of each other. Every stage will have you repeat the process of the last stage(s). Try to do the previous stage(s) steps from memory if possible and re-visit their detailed instructions if you get lost. Files containing the solution can be found on the <a href="https://github.com/DevMountain/employee-manager/tree/solution/src">solution branch</a>. 
 
 <br />
 
