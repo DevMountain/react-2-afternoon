@@ -14,10 +14,10 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <Header />
+        // render Header here
         <div className="main-container">
-          <EmployeeList employees={this.state.employees} selectEmployee={ this.selectEmployee } />
-          <EmployeeEditor selected={this.state.selectedEmployee} refreshList={ this.refresh } />
+          // render EmployeeList here
+          // render EmployeeEditor here
         </div>
       </div>
     )
