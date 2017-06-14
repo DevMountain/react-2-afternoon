@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Employee from './models/Employee';
 
 // components
+import Header from './components/Header';
 
 class App extends Component {
   // constructor
@@ -14,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        // render Header here
+        <Header />
         <div className="main-container">
           // render EmployeeList here
           // render EmployeeEditor here
