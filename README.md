@@ -64,7 +64,7 @@ The first error that you should encounter is when clicking on an employee. This 
 
 First let's cover the data flow to figure out why our context is getting lost. Inside of `App.js` we can see on line 31 we are rendering in our `EmployeeList` component with two props. One of those props being our `selectEmployee` method on `App`. This means that inside of the `employeeList` component it can access the method through `this.props.selectEmployee`. We are then using the `selectEmployee` prop on line 11 in `EmployeeList.js` in combination with an `onClick` event. 
 
-Because of this current setup when the `selectEmployee` method gets called from the `employeeList` component `this` does not refer to the `App` class which has a `setState` method. `this` refers to the props on the `EmployeeList` component. We can prove that by adding a `console.log(this)` before `this.setState({})` gets called in the `selectEmployee` method. The log should look similiar to:
+Because of this current setup when the `selectEmployee` method gets called from the `employeeList` component `this` does not refer to the `App` class which has a `setState` method. `this` refers to the props on the `EmployeeList` component. We can prove that by adding a `console.log(this)` before `this.setState({})` gets called in the `selectEmployee` method. The log should look similar to:
 
 ```js
 {
@@ -200,7 +200,7 @@ In this stage we will re-create our `handleChange` method in `EmployeeEditor.js`
 
 ### Instructions
 
-Create a `handleChange` method on the `EmployeeEditor` component that takes in what property to change and what value to give that property as parameters. Also we want to update `notModified` on state from `true` to `false` since a modification has occured. 
+Create a `handleChange` method on the `EmployeeEditor` component that takes in what property to change and what value to give that property as parameters. Also we want to update `notModified` on state from `true` to `false` since a modification has occurred. 
 
 <details>
 
